@@ -12,11 +12,37 @@
 
     <artifactId>producer</artifactId>
 
+    <properties>
+        <vertx.launcher>br.com.emmanuelneri.producer.Application</vertx.launcher>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-web</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.reactiverse</groupId>
+                <artifactId>vertx-maven-plugin</artifactId>
+                <version>1.0.20</version>
+                <executions>
+                    <execution>
+                        <id>vmp</id>
+                        <goals>
+                            <goal>initialize</goal>
+                            <goal>package</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <redeploy>true</redeploy>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
